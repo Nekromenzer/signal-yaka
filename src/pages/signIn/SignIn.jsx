@@ -15,9 +15,9 @@ const SignIn = () => {
         md={24}
         sm={24}
         xs={24}
-        className='flex items-center justify-center bg-red'
+        className='flex items-center justify-center h-screen'
       >
-        <div className='bg-white p-4 rounded-md'>
+        <div className='bg-slate-200 p-4 rounded-md 2xl:h-[15rem] flex flex-col items-center justify-center'>
           <div className='text-[2rem] text-navy font-bold mb-8 text-center'>
             {isLogin ? 'Sign In' : 'Sign up'}
           </div>

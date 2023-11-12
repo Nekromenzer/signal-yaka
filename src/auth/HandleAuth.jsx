@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet, Navigate } from 'react-router'
 
 const HandleAuth = () => {
-  const auth = true
+  const auth = false
   if (!auth) {
     return <Navigate to='/login' replace={true} />
   }
