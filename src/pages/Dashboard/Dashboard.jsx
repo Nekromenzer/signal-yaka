@@ -1,16 +1,12 @@
-import React from 'react'
+import React from "react";
+import { Button } from "antd";
 
 const Dashboard = () => {
   return (
-    <div
-      style={{
-        fontSize: '2rem',
-        color: '#1d3557'
-      }}
-    >
-      Dashboard
+    <div className="bg-red-400">
+      <Button type="primary">Button</Button>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
