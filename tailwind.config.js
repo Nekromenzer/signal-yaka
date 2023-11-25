@@ -15,30 +15,5 @@ export default {
       }
     }
   },
-  daisyui: {
-    themes: [
-      {
-        mytheme: {
-          primary: '#E63946',
-
-          secondary: '#1D3557',
-
-          accent: '#457B9D',
-
-          neutral: '#A8DAD',
-
-          'base-100': '#F1FAEE',
-
-          info: '#5c91db',
-
-          success: '#1f8e51',
-
-          warning: '#a48904',
-
-          error: '#ea485b'
-        }
-      }
-    ]
-  },
-  plugins: [require('daisyui')]
+  plugins: []
 }
