@@ -15,6 +15,16 @@ const Layout = () => {
     };
   }
 
+  const setActiveKey = () => {
+    const path = window.location.pathname;
+    if (path === "/dashboard") {
+      return "dashboard";
+    }
+    if (path === "/referral") {
+      return "referral";
+    }
+  };
+
   const items = [
     getItem("Dashboard", "dashboard", <FaRankingStar />),
     getItem("Referral", "referral", <FaLink />),
@@ -30,20 +40,10 @@ const Layout = () => {
     }
   };
 
-  const setActiveKey = () => {
-    const path = window.location.pathname;
-    if (path === "/dashboard") {
-      return "dashboard";
-    }
-    if (path === "/referral") {
-      return "referral";
-    }
-  };
-
   return (
     <Row>
-      <Col span={3} className="bg-red-400">
-        <div className="h-[100px] border-r-[1px] flex items-center justify-center cursor-pointer">
+      <Col span={3}>
+        <div className="h-[100px] drop-shadow-md border-none flex items-center justify-center cursor-pointer bg-white">
           <img
             src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
             alt="logo"
@@ -55,13 +55,13 @@ const Layout = () => {
           mode="inline"
           theme="light"
           items={items}
-          className="h-[calc(100vh-100px)]"
+          className="h-[calc(100vh-100px)] drop-shadow-md !border-none"
           onClick={(menuData) => {
             handleNavigation(menuData);
           }}
         />
       </Col>
-      <Col span={21} className="p-4 lg:p-5 2xl:p-6">
+      <Col span={21}>
         <Outlet />
       </Col>
     </Row>

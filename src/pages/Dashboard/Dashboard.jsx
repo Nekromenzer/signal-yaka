@@ -1,11 +1,14 @@
 import React from "react";
 import { Button } from "antd";
+import PageWrapper from "../../layout/PageWrapper";
 
 const Dashboard = () => {
   return (
-    <div className="bg-red-400">
-      <Button type="primary">Button</Button>
-    </div>
+    <PageWrapper>
+      <div className="bg-pink-400">
+        <Button type="primary">Button</Button>
+      </div>
+    </PageWrapper>
   );
 };
 
