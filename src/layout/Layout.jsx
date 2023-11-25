@@ -43,12 +43,19 @@ const Layout = () => {
   return (
     <Row>
       <Col span={3} className="bg-red-400">
+        <div className="h-[100px] border-r-[1px] flex items-center justify-center cursor-pointer">
+          <img
+            src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+            alt="logo"
+            className="h-[50px]"
+          />
+        </div>
         <Menu
           defaultSelectedKeys={[setActiveKey()]}
           mode="inline"
           theme="light"
           items={items}
-          className="h-screen"
+          className="h-[calc(100vh-100px)]"
           onClick={(menuData) => {
             handleNavigation(menuData);
           }}
