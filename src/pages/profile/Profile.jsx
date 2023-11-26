@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Avatar, Typography } from "antd";
+import { Card, Avatar, Typography, Button } from "antd";
 import PageWrapper from "../../layout/PageWrapper";
 
 const Profile = () => {
@@ -9,7 +9,7 @@ const Profile = () => {
     binanceId: "9978797978892",
     phone: "**********",
   });
-
+  const [loading, setLoading] = useState(false);
   const dataList = [
     {
       id: "email",
@@ -91,6 +91,18 @@ const Profile = () => {
               </Paragraph>
             </div>
           ))}
+        </div>
+        <div className="flex items-center justify-center lg:justify-end">
+          <Button
+            type="default"
+            className="text-[0.8rem] px-2 border-none font-semibold bg-navy text-white hover:!text-white/60 ml-auto"
+            onClick={() => {
+              console.log("clicked");
+            }}
+            loading={loading}
+          >
+            {loading ? "saving..." : "Input Button Name"}
+          </Button>
         </div>
       </Card>
     </PageWrapper>
