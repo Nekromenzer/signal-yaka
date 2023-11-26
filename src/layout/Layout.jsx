@@ -14,16 +14,8 @@ const Layout = () => {
       label,
     };
   }
-
-  const setActiveKey = () => {
-    const path = window.location.pathname;
-    if (path === "/dashboard") {
-      return "dashboard";
-    }
-    if (path === "/referral") {
-      return "referral";
-    }
-  };
+  
+  const path = window.location.pathname;
 
   const items = [
     getItem("Dashboard", "dashboard", <FaRankingStar />),
@@ -51,7 +43,7 @@ const Layout = () => {
           />
         </div>
         <Menu
-          defaultSelectedKeys={[setActiveKey()]}
+          defaultSelectedKeys={[path.replace("/", "")]}
           mode="inline"
           theme="light"
           items={items}

@@ -6,8 +6,8 @@ const PageWrapper = ({ children }) => {
   const path = window.location.pathname;
   return (
     <>
-      <div className="h-[50px] w-full px-4 lg:px-5 flex items-center gap-4 justify-end">
-        <div className="mr-auto text-[0.8rem] capitalize">{path.replace("/", "")}</div>
+      <div className="h-[50px] w-full px-4 lg:px-5 flex items-center gap-4 justify-end bg-cloud">
+        <div className="mr-auto text-[0.8rem] capitalize font-mono">{path.replace("/", "")}</div>
         <span className="font-semibold tracking-wide text-base">Maneesha Gimshan</span>
         <Avatar
           size={{ xs: 24, sm: 32, md: 40 }}
