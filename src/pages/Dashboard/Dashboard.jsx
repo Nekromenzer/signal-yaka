@@ -5,7 +5,7 @@ import PageWrapper from "../../layout/PageWrapper";
 const Dashboard = () => {
   return (
     <PageWrapper>
-      <div className="bg-pink-400">
+      <div className="bg-pink-400 hover:bg-blue-500">
         <Button type="primary">Button</Button>
       </div>
     </PageWrapper>

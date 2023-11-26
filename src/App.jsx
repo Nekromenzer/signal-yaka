@@ -4,7 +4,8 @@ import Layout from "./layout/Layout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import SignIn from "./pages/signIn/SignIn";
 import HandleAuth from "./auth/HandleAuth";
-import Referral from "./pages/referal/Referral";
+import Referral from "./pages/referral/Referral";
+import Profile from "./pages/profile/Profile"
 // import Home from './pages/Home/Home'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="referral" element={<Referral />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Route>
     </Routes>

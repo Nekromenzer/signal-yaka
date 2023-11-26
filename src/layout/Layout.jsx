@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { Menu, Row, Col } from "antd";
-import { FaLink, FaRankingStar } from "react-icons/fa6";
+import { FaLink, FaRankingStar, FaRegUser } from "react-icons/fa6";
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -14,12 +14,13 @@ const Layout = () => {
       label,
     };
   }
-  
+
   const path = window.location.pathname;
 
   const items = [
     getItem("Dashboard", "dashboard", <FaRankingStar />),
     getItem("Referral", "referral", <FaLink />),
+    getItem("Profile", "profile", <FaRegUser />),
   ];
 
   const handleNavigation = (menuData) => {
@@ -29,6 +30,9 @@ const Layout = () => {
     }
     if (key === "referral") {
       return navigate("/referral", { replace: true });
+    }
+    if (key === "profile") {
+      return navigate("/profile", { replace: true });
     }
   };
 
