@@ -95,13 +95,13 @@ const Profile = () => {
         <div className="flex items-center justify-center lg:justify-end">
           <Button
             type="default"
-            className="text-[0.8rem] px-2 border-none font-semibold bg-navy text-white hover:!text-white/60 ml-auto"
+            className="text-[0.8rem] px-2 border-none font-semibold bg-navy text-white hover:!text-sun"
             onClick={() => {
               console.log("clicked");
             }}
             loading={loading}
           >
-            {loading ? "saving..." : "Input Button Name"}
+            {loading ? "saving..." : "Update"}
           </Button>
         </div>
       </Card>
