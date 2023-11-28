@@ -4,7 +4,7 @@ import PageWrapper from "../../layout/PageWrapper";
 
 const Profile = () => {
   const [userData, setUserData] = useState({
-    email: "bagimshan@gmail.com",
+    email: localStorage.getItem("email"),
     telegramId: "user@88",
     binanceId: "9978797978892",
     phone: "**********",
@@ -61,24 +61,27 @@ const Profile = () => {
         className="drop-shadow-md shadow-emerald-500"
       >
         <div className="flex items-center justify-between cursor-pointer">
-          <h1 className="font-semibold">Maneesha Gimshan</h1>
+          <h1 className="font-semibold">{localStorage.getItem("name")}</h1>
           <Avatar
             size={60}
             className="border-[1px] border-gray-300 hover:shadow-md duration-200 transition-shadow"
             // profile image url
-            src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+            src={localStorage.getItem("profilePic")}
           />
         </div>
         <div className="mt-6">
           {dataList.map((item, index) => (
-            <div className="flex gap-1 md:gap-4 md:items-center items-start flex-col md:flex-row" key={index}>
+            <div
+              className="flex gap-1 md:gap-4 md:items-center items-start flex-col md:flex-row"
+              key={index}
+            >
               <div className="md:w-1/5 w-1/2 flex gap-1 justify-between">
                 <Paragraph className="font-semibold">{item.label}</Paragraph>
                 <Paragraph className="font-semibold">:</Paragraph>
               </div>
               <Paragraph
-                className="w-full"
-                disabled={item.id === "phone"}
+                className="w-full disabled:!text-black !text-black"
+                disabled={item.id === "phone" || item.id === "email"}
                 editable={
                   item.id !== "phone" && {
                     onChange: (text) => {
