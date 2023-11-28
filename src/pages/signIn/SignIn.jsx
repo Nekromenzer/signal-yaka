@@ -1,11 +1,19 @@
-import React, { useState } from "react";
-import { Col, Row, Image } from "antd";
-import logo from "../../img/logo.png";
+import React, { useState, useEffect } from "react";
+// import { Col, Row, Image } from "antd";
+// import logo from "../../img/logo.png";
+import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { signInWithGoogle } from "../../firebase/GoogleSignin";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% h-screen flex flex-col gap-[2rem] items-center justify-center">
