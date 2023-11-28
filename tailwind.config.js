@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         navy: '#1D3557',
-        red: '#E63946',
+        sun: '#E63946',
         sea: '#457B9D',
         sky: '#A8DADC',
         cloud: '#F1FAEE'
