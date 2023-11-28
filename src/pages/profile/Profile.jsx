@@ -58,7 +58,7 @@ const Profile = () => {
       <Card
         bordered={false}
         style={{ maxWidth: 600 }}
-        className="drop-shadow-md"
+        className="drop-shadow-md shadow-emerald-500"
       >
         <div className="flex items-center justify-between cursor-pointer">
           <h1 className="font-semibold">Maneesha Gimshan</h1>
@@ -71,8 +71,8 @@ const Profile = () => {
         </div>
         <div className="mt-6">
           {dataList.map((item, index) => (
-            <div className="flex gap-4 items-center" key={index}>
-              <div className="w-1/5 flex gap-1 justify-between">
+            <div className="flex gap-1 md:gap-4 md:items-center items-start flex-col md:flex-row" key={index}>
+              <div className="md:w-1/5 w-1/2 flex gap-1 justify-between">
                 <Paragraph className="font-semibold">{item.label}</Paragraph>
                 <Paragraph className="font-semibold">:</Paragraph>
               </div>
@@ -95,7 +95,7 @@ const Profile = () => {
         <div className="flex items-center justify-center lg:justify-end">
           <Button
             type="default"
-            className="text-[0.8rem] px-2 border-none font-semibold bg-navy text-white hover:!text-sun"
+            className="text-[0.8rem] px-2 border-none font-semibold border-[1px] bg-emerald-500 text-white hover:!text-emerald-500 hover:!bg-emerald-100 hover:!border-emerald-500 hover:!shadow-emerald-500 duration-200 transition-all"
             onClick={() => {
               console.log("clicked");
             }}
