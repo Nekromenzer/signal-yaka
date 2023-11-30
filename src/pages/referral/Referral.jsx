@@ -4,6 +4,11 @@ import { Typography, Card } from "antd";
 
 const Referral = () => {
   const { Paragraph } = Typography;
+  const referralLink = import.meta.env.VITE_REFERRAL_URL;
+
+  const modifiedReferralLink = `${referralLink}/ref/${localStorage.getItem(
+    "uid"
+  )}`;
   return (
     <PageWrapper>
       <Card
@@ -11,9 +16,9 @@ const Referral = () => {
         style={{ maxWidth: 600 }}
         className="drop-shadow-md"
       >
-        <div className="font-semibold mb-4">Copy refereral</div>
+        <div className="font-semibold mb-4">Copy referral</div>
         <Paragraph copyable className="text-blue-500">
-          https://ant.design/components/typography
+          {modifiedReferralLink}
         </Paragraph>
       </Card>
     </PageWrapper>
