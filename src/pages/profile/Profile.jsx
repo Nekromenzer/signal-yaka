@@ -1,35 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Avatar, Typography, Button } from "antd";
 import PageWrapper from "../../layout/PageWrapper";
+import handleApiCall from "../../api/handleApiCall";
+import axios from "axios";
 
 const Profile = () => {
   const [userData, setUserData] = useState({
     email: localStorage.getItem("email"),
-    telegramId: "user@88",
-    binanceId: "9978797978892",
-    phone: "**********",
+    name: localStorage.getItem("name"),
+    telegram_id: "",
+    binance_pay_id: "",
+    phone: "",
+    address: "",
+    referral_user_id: localStorage.getItem("referralId"),
+    user_auth_id: localStorage.getItem("uid"),
   });
   const [loading, setLoading] = useState(false);
   const dataList = [
+    {
+      id: "name",
+      label: "Name",
+      value: userData.name,
+    },
+    {
+      id: "phone",
+      label: "Phone",
+      value: userData.phone,
+    },
+    {
+      id: "address",
+      label: "Address",
+      value: userData.address,
+    },
     {
       id: "email",
       label: "Email",
       value: userData.email,
     },
     {
-      id: "telegramId",
+      id: "telegram_id",
       label: "Telegram ID",
       value: userData.telegramId,
     },
     {
-      id: "binanceId",
+      id: "binance_pay_id",
       label: "Binance ID",
       value: userData.binanceId,
-    },
-    {
-      id: "phone",
-      label: "Phone",
-      value: userData.phone,
     },
   ];
 
@@ -52,6 +68,33 @@ const Profile = () => {
   };
 
   const { Paragraph } = Typography;
+
+  useEffect(() => {
+    // fetch user data from api
+    handleApiCall({
+      urlType: "profiles",
+      // urlParams: `/rNn1qCtUMKndzPA0uQR8`,
+      cb: (res) => {
+        if (res.status === 200) {
+          console.log(res.data);
+        }
+      },
+    });
+
+  //   axios
+  //     .get("https://us-central1-infact-zerp.cloudfunctions.net/api/user/profiles")
+  //     .then(function (response) {
+  //       // handle success
+  //       console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       console.log(error);
+  //     })
+  //     .finally(function () {
+  //       // always executed
+  //     });
+  // }, []);
 
   return (
     <PageWrapper>
@@ -82,13 +125,9 @@ const Profile = () => {
               <Paragraph
                 className="w-full disabled:!text-black !text-black"
                 disabled={item.id === "phone" || item.id === "email"}
-                editable={
-                  item.id !== "phone" && {
-                    onChange: (text) => {
-                      handleValueChange(text, item.id);
-                    },
-                  }
-                }
+                editable={(text) => {
+                  handleValueChange(text, item.id);
+                }}
               >
                 {item.value}
               </Paragraph>
@@ -100,7 +139,15 @@ const Profile = () => {
             type="default"
             className="text-[0.8rem] px-2 border-none font-semibold border-[1px] bg-emerald-500 text-white hover:!text-emerald-500 hover:!bg-emerald-100 hover:!border-emerald-500 hover:!shadow-emerald-500 duration-200 transition-all"
             onClick={() => {
-              console.log("clicked");
+              handleApiCall({
+                urlType: "createProfile",
+                data: userData,
+                cb: (res) => {
+                  if (res.status === 200) {
+                    console.log(res.data);
+                  }
+                },
+              });
             }}
             loading={loading}
           >

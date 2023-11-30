@@ -2,7 +2,7 @@ import axios from "axios";
 import urlDoc from "./url";
 
 // const baseUrl = import.meta.env.VITE_API_URL
-const baseUrl = "https://us-central1-infact-zerp.cloudfunctions.net/api/";
+const baseUrl = "http://localhost:3000/";
 
 const handleApiCall = ({
   variant = "user",
@@ -18,6 +18,7 @@ const handleApiCall = ({
   const method = urlDoc[variant][urlType]?.type;
 
   async function handelCall() {
+    console.log(url);
     setLoading(true);
     try {
       const response = await axios({
@@ -26,11 +27,12 @@ const handleApiCall = ({
         data,
         params,
         headers: {
+          "Access-Control-Allow-Methods":
+            "POST, PUT, PATCH, GET, DELETE, OPTIONS",
           "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
           "Access-Control-Allow-Origin": "*",
-          Authorization: auth
-            ? `Bearer ${localStorage.getItem("token")}`
-            : "",
+          Authorization: auth ? `Bearer ${localStorage.getItem("token")}` : "",
         },
       });
       setLoading(false);
