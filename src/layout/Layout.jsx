@@ -20,7 +20,7 @@ const Layout = () => {
 
   const items = [
     getItem("Dashboard", "dashboard", <FaRankingStar />),
-    getItem("Referral", "referral", <FaLink />),
+    // getItem("Referral", "referral", <FaLink />),
     getItem("Profile", "profile", <FaRegUser />),
     getItem("Logout", "logout", <FaSignOutAlt />),
   ];
