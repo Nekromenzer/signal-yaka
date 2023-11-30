@@ -1,7 +1,6 @@
 import axios from "axios";
 import urlDoc from "./url";
 
-// const baseUrl = import.meta.env.VITE_API_URL
 const baseUrl = "https://us-central1-infact-zerp.cloudfunctions.net/api/";
 
 const handleApiCall = ({
@@ -32,7 +31,7 @@ const handleApiCall = ({
         },
       });
       setLoading(false);
-      return cb(response.data, response.status);
+      return cb(response, response.status);
     } catch (error) {
       setLoading(false);
       cb(error, error.response?.status);
