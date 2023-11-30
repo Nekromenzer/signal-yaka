@@ -25,6 +25,7 @@ const handleApiCall = ({
         data,
         params,
         headers: {
+          Accept: "*/*",
           "Access-Control-Allow-Headers": "*",
           "Access-Control-Allow-Origin": "*",
           Authorization: auth ? `Bearer ${localStorage.getItem("token")}` : "",
@@ -34,7 +35,7 @@ const handleApiCall = ({
       return cb(response, response.status);
     } catch (error) {
       setLoading(false);
-      cb(error, error.response?.status);
+      cb(error, error.response);
       throw error;
     }
   }
