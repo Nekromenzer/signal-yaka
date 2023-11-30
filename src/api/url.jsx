@@ -1,4 +1,4 @@
-const url = {
+const urlDoc = {
   user: {
     profiles: {
       url: "user/profiles",
@@ -38,3 +38,4 @@ const url = {
     },
   },
 };
+export default urlDoc;
