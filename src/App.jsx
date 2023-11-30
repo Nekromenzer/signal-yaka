@@ -5,12 +5,14 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import SignIn from "./pages/signIn/SignIn";
 import HandleAuth from "./auth/HandleAuth";
 import Referral from "./pages/referral/Referral";
-import Profile from "./pages/profile/Profile"
+import Profile from "./pages/profile/Profile";
+import Ref from "./pages/refCheck/ref";
 // import Home from './pages/Home/Home'
 
 function App() {
   return (
     <Routes>
+      <Route path="ref/:id" element={<Ref />} />
       <Route path="login" element={<SignIn />} />
       <Route element={<HandleAuth />}>
         <Route element={<Layout />}>
