@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { Menu, Row, Col } from "antd";
 import { FaLink, FaRankingStar, FaRegUser } from "react-icons/fa6";
+import { FaSignOutAlt } from "react-icons/fa";
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Layout = () => {
     getItem("Dashboard", "dashboard", <FaRankingStar />),
     getItem("Referral", "referral", <FaLink />),
     getItem("Profile", "profile", <FaRegUser />),
+    getItem("Logout", "logout", <FaSignOutAlt />),
   ];
 
   const handleNavigation = (menuData) => {
@@ -34,17 +36,17 @@ const Layout = () => {
     if (key === "profile") {
       return navigate("/profile", { replace: true });
     }
+    if (key === "logout") {
+      localStorage.clear();
+      return navigate("/login", { replace: true });
+    }
   };
 
   return (
     <Row>
       <Col span={3}>
         <div className="h-[100px] drop-shadow-md border-none flex items-center justify-center cursor-pointer bg-white">
-          <img
-            src="src/assets/logo.png"
-            alt="logo"
-            className="h-[50px]"
-          />
+          <img src="src/assets/logo.png" alt="logo" className="h-[50px]" />
         </div>
         <Menu
           defaultSelectedKeys={[path.replace("/", "")]}
