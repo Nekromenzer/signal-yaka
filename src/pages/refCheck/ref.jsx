@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const Ref = () => {
-  const navigate = useNavigate();
   useEffect(() => {
     const getCurrentUrl = window.location.href;
     const getIdByFilteringUrl = getCurrentUrl.split("/").pop();
