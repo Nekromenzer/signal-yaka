@@ -2,10 +2,10 @@ import axios from 'axios'
 import urlDoc from './url'
 
 // const baseUrl = import.meta.env.VITE_API_URL
-const baseUrl = 'http://localhost:5000/api/'
+const baseUrl = 'https://us-central1-infact-zerp.cloudfunctions.net/api/'
 
 const handleApiCall = ({
-  variant = 'auth',
+  variant = 'user',
   urlType,
   data,
   params,
