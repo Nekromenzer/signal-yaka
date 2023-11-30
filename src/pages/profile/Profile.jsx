@@ -34,9 +34,18 @@ const Profile = () => {
       setLoading,
       cb: (res) => {
         if (res.status === 200) {
-          const { nic, address, mobile, telegram_id, binance_pay_id, name } =
-            res?.data;
-
+          const {
+            nic,
+            address,
+            mobile,
+            telegram_id,
+            binance_pay_id,
+            name,
+            subscription_valid,
+            kyc_verified,
+          } = res?.data;
+          localStorage.setItem("subscription_valid", subscription_valid);
+          localStorage.setItem("kyc_verified", kyc_verified);
           setUserData({
             name: name,
             nic: nic,
@@ -107,7 +116,7 @@ const Profile = () => {
               cb: (res) => {
                 if (res.status === 200 || res.status === 201) {
                   success();
-                }else{
+                } else {
                   messageApi.error("Something went wrong");
                 }
               },

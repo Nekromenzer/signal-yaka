@@ -32,7 +32,14 @@ const CreateProfile = () => {
       setLoading,
       cb: (res) => {
         if (res.status === 200) {
-          navigate("/dashboard", { replace: true });
+          const { subscription_valid, kyc_verified } = res?.data;
+          localStorage.setItem("subscription_valid", subscription_valid);
+          localStorage.setItem("kyc_verified", kyc_verified);
+          if (!subscription_valid || !kyc_verified) {
+            navigate("/dashboard", { replace: true });
+          } else {
+            navigate("/profile", { replace: true });
+          }
         } else if (res.response.data.statusCode === 404) {
           setShowForm(true);
         } else {
