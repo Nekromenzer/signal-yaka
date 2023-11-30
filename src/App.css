@@ -11,3 +11,7 @@
 body {
     @apply bg-white
 }
+
+.ant-menu .ant-menu-item:nth-child(4) {
+    margin-top: 70vh;
+}
