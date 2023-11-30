@@ -46,7 +46,7 @@ const Layout = () => {
     <Row>
       <Col span={3}>
         <div className="h-[100px] drop-shadow-md border-none flex items-center justify-center cursor-pointer bg-white">
-          <img src="src/assets/logo.png" alt="logo" className="h-[50px]" />
+          <img src="../../../public/logo.png" alt="logo" className="h-[50px]" />
         </div>
         <Menu
           defaultSelectedKeys={[path.replace("/", "")]}

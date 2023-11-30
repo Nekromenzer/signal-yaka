@@ -18,7 +18,7 @@ const SignIn = () => {
   return (
     <div className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% h-screen flex flex-col gap-[2rem] items-center justify-center">
       <div className="text-2xl text-white antialiased uppercase tracking-wider font-semibold mt-[-3rem]">
-        <img src="src/assets/logo.png" alt="logo" className="h-[50px]" />
+        <img src="../../../public/logo.png" alt="logo" className="h-[50px]" />
       </div>
       <div className="bg-white p-4 rounded-2xl 2xl:h-[13rem] flex flex-col items-center justify-center max-w-[20rem] drop-shadow-lg shadow-emerald-300 duration-500 transition-all delay-75 hover:bg-emerald-50">
         <div className="text-[2rem] text-navy font-bold mb-8 text-center">

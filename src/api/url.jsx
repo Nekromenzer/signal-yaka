@@ -17,7 +17,7 @@ const urlDoc = {
       type: "put",
     },
   },
-  subscription: {
+  variant: {
     create: {
       url: "core/subscription",
       type: "post",
