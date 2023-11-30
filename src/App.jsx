@@ -7,12 +7,14 @@ import HandleAuth from "./auth/HandleAuth";
 import Referral from "./pages/referral/Referral";
 import Profile from "./pages/profile/Profile";
 import Ref from "./pages/refCheck/ref";
-import CreateProfile from "./pages/createProfile/createProfile"
+import CreateProfile from "./pages/createProfile/createProfile";
+import Home from "./pages/home/Home";
 // import Home from './pages/Home/Home'
 
 function App() {
   return (
     <Routes>
+      <Route path="home" element={<Home />} />
       <Route path="ref/:id" element={<Ref />} />
       <Route path="login" element={<SignIn />} />
       <Route element={<HandleAuth />}>

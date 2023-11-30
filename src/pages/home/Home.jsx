@@ -1,0 +1,147 @@
+import React, { useCallback, useEffect } from "react";
+import { Typewriter } from "react-simple-typewriter";
+import { useNavigate } from "react-router-dom";
+import heroImage from "/public/hero-1.png";
+import { loadSlim } from "tsparticles-slim";
+import AOS from "aos";
+import Particles from "react-particles";
+
+const Home = () => {
+  const navigate = useNavigate();
+  const particlesInit = useCallback(async (engine) => {
+    console.log(engine);
+    await loadSlim(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container) => {
+    await console.log(container);
+  }, []);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  return (
+    <div className="h-screen overflow-hidden">
+      <img src="/public/logo.png" width={300} className="absolute top-5 left-24"/>
+      <div className="bg-emerald-600 absolute w-fit md:w-full opacity-40 rounded-bl-[6rem] h-[80vh] md:h-[26rem] lg:rounded-bl-[18.75rem] lg:h-[37.5rem] xl:h-[49.5rem] 2xl:h-screen" />
+      <div className="md:w-full relative z-[11] w-fit">
+        <div className="flex justify-normal md:justify-between items-start h-screen px-8 lg:px-[8rem] pt-[6rem] lg:pt-[10rem] xl:pt-[14rem] lg:flex-row flex-col">
+          <div className="w-full lg:w-[50%] lg:absolute">
+            <h1 className="text-[#1D3557] text-[3rem] md:text-[3rem] lg:text[3.5rem] xl:text-[5rem] font-normal lg:leading-[4rem] xl:leading-[6rem] leading-[4rem] mb-8 text-center lg:text-left">
+              Unlock Earnings
+              <br className="md:hidden lg:block" />
+              with ZERP -
+              <br />
+              <span className="md:mx-auto md:text-[1.6rem] lg:text-[2rem] xl:text-[4rem] text-[1.3rem] font-bold">
+                <Typewriter
+                  words={["For Creators and, Advertisers"]}
+                  loop
+                  cursor
+                  cursorBlinking
+                />
+              </span>
+            </h1>
+            <p className="text-[#E63946] text-xl lg:text-2xl tracking-wider leading-9 text-center lg:text-left font-semibold">
+              Earn Rewards by Watching Videos |
+              <br className="hidden xl:block" /> Advertise with Us | Boost Your
+              YouTube Channel.
+            </p>
+            <div
+              onClick={() => {
+                navigate("/login");
+              }}
+              className="mx-auto md:mx-0 rounded-[2rem] w-[12rem] bg-[#E63946] text-white font-semibold text-center px-4 py-3 cursor-pointer hover:shadow shadow-red mt-8 xl:mt-[5rem] border-double border"
+            >
+              GET STARTED
+            </div>
+          </div>
+
+          <div className="self-end w-full lg:w-[50%] lg:absolute right-0  lg:top-[13.6rem] xl:pl-[11rem] hidden lg:block">
+            <img
+              width="auto"
+              src={heroImage}
+              className="max-w-[30rem]"
+              alt="office"
+            />
+          </div>
+        </div>
+      </div>
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        loaded={particlesLoaded}
+        options={{
+          background: {
+            color: {
+              value: "white",
+            },
+          },
+          fpsLimit: 60,
+          interactivity: {
+            events: {
+              onClick: {
+                enable: true,
+                mode: "push",
+              },
+              onHover: {
+                enable: true,
+                mode: "repulse",
+              },
+              resize: true,
+            },
+            modes: {
+              push: {
+                quantity: 4,
+              },
+              repulse: {
+                distance: 100,
+                duration: 0.4,
+              },
+            },
+          },
+          particles: {
+            color: {
+              value: "#E63946",
+            },
+            links: {
+              color: "#1D3557",
+              distance: 150,
+              enable: true,
+              opacity: 0.2,
+              width: 1,
+            },
+            move: {
+              direction: "none",
+              enable: true,
+              outModes: {
+                default: "bounce",
+              },
+              random: false,
+              speed: 1,
+              straight: false,
+            },
+            number: {
+              density: {
+                enable: true,
+                area: 1200,
+              },
+              value: 80,
+            },
+            opacity: {
+              value: 0.2,
+            },
+            shape: {
+              type: "circle",
+            },
+            size: {
+              value: { min: 1, max: 5 },
+            },
+          },
+          detectRetina: true,
+        }}
+      />
+    </div>
+  );
+};
+
+export default Home;
