@@ -14,7 +14,7 @@ const Referral = () => {
       <Card
         bordered={false}
         style={{ maxWidth: 600 }}
-        className="drop-shadow-md"
+        className="drop-shadow-md mt-8"
       >
         <div className="font-semibold mb-4">Copy referral</div>
         <Paragraph copyable className="text-blue-500">
