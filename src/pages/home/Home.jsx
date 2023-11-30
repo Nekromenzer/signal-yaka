@@ -23,18 +23,18 @@ const Home = () => {
   return (
     <div className="h-screen overflow-hidden">
       <img src="/public/logo.png" width={300} className="absolute top-5 left-24"/>
-      <div className="bg-emerald-600 absolute w-fit md:w-full opacity-40 rounded-bl-[6rem] h-[80vh] md:h-[26rem] lg:rounded-bl-[18.75rem] lg:h-[37.5rem] xl:h-[49.5rem] 2xl:h-screen" />
+      <div className="bg-gradient-to-r from-emerald-100 from-10% via-sky-500 via-30% to-emerald-500 to-90% absolute w-fit md:w-full opacity-40 rounded-bl-[6rem] h-[80vh] md:h-[26rem] lg:rounded-bl-[18.75rem] lg:h-[37.5rem] xl:h-[49.5rem] 2xl:h-screen" />
       <div className="md:w-full relative z-[11] w-fit">
         <div className="flex justify-normal md:justify-between items-start h-screen px-8 lg:px-[8rem] pt-[6rem] lg:pt-[10rem] xl:pt-[14rem] lg:flex-row flex-col">
           <div className="w-full lg:w-[50%] lg:absolute">
             <h1 className="text-[#1D3557] text-[3rem] md:text-[3rem] lg:text[3.5rem] xl:text-[5rem] font-normal lg:leading-[4rem] xl:leading-[6rem] leading-[4rem] mb-8 text-center lg:text-left">
               Unlock Earnings
               <br className="md:hidden lg:block" />
-              with ZERP -
+              with 10Doller -
               <br />
               <span className="md:mx-auto md:text-[1.6rem] lg:text-[2rem] xl:text-[4rem] text-[1.3rem] font-bold">
                 <Typewriter
-                  words={["For Creators and, Advertisers"]}
+                  words={["Gain your $10 to $100"]}
                   loop
                   cursor
                   cursorBlinking
@@ -42,9 +42,9 @@ const Home = () => {
               </span>
             </h1>
             <p className="text-[#E63946] text-xl lg:text-2xl tracking-wider leading-9 text-center lg:text-left font-semibold">
-              Earn Rewards by Watching Videos |
-              <br className="hidden xl:block" /> Advertise with Us | Boost Your
-              YouTube Channel.
+              Empowering the trading community |
+              <br className="hidden xl:block" /> with proficient signals and
+              Fundamental knowledge!.
             </p>
             <div
               onClick={() => {
