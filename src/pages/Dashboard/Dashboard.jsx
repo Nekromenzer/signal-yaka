@@ -5,7 +5,13 @@ import { Alert, Card, Typography, Statistic } from "antd";
 import handleApiCall from "../../api/handleApiCall";
 
 const Dashboard = () => {
-  const [subscription, setSubscription] = useState({});
+  const [subscription, setSubscription] = useState({
+    subscription_valid: false,
+    kyc_verified: false,
+  });
+  const [userData, setUserData] = useState({});
+  const [loading, setLoading] = useState(false);
+
   const { Paragraph } = Typography;
   const referralLink = import.meta.env.VITE_REFERRAL_URL;
   const modifiedReferralLink = `${referralLink}/ref/${localStorage.getItem(
@@ -14,18 +20,13 @@ const Dashboard = () => {
   const { Countdown } = Statistic;
   const deadline = Date.now() + 1000 * 60 * 60 * 24 * 182 + 1000 * 30;
 
-  const subscription_valid = localStorage.getItem("subscription_valid");
-  const kyc_verified = localStorage.getItem("kyc_verified");
-
-  console.log(subscription_valid, kyc_verified);
-
   useEffect(() => {
     handleApiCall({
       variant: "variant",
       urlType: "getSubById",
       // urlParams: `/${localStorage.getItem("uid")}`,
       urlParams: "/5p8crgmWHaxSBV78yECK",
-      setLoading: () => {},
+      setLoading,
       cb: (res) => {
         if (res.status === 200) {
           setSubscription(res?.data);
@@ -34,10 +35,36 @@ const Dashboard = () => {
     });
   }, []);
 
+  useEffect(() => {
+    handleApiCall({
+      urlType: "getProfileById",
+      urlParams: `/${localStorage.getItem("uid")}`,
+      setLoading,
+      cb: (res) => {
+        if (res.status === 200) {
+          const { subscription_valid, kyc_verified } = res?.data;
+          localStorage.setItem("subscription_valid", subscription_valid);
+          localStorage.setItem("kyc_verified", kyc_verified);
+          setUserData({
+            subscription_valid: subscription_valid,
+            kyc_verified: kyc_verified,
+          });
+        }
+      },
+    });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        Loading... Please wait
+      </div>
+    );
+  }
   return (
-    <PageWrapper>
+    <PageWrapper childClass="dashboard-bg">
       <div className="2xl:mx-24">
-        {!kyc_verified ? (
+        {!userData.kyc_verified && (
           <Alert
             banner
             message={
@@ -50,11 +77,9 @@ const Dashboard = () => {
               </Marquee>
             }
           />
-        ) : (
-          ""
         )}
 
-        {!subscription_valid ? (
+        {!userData.subscription_valid && (
           <Alert
             className="mt-8"
             banner
@@ -69,8 +94,6 @@ const Dashboard = () => {
               </Marquee>
             }
           />
-        ) : (
-          ""
         )}
       </div>
       <div className="mt-12">
@@ -78,14 +101,14 @@ const Dashboard = () => {
           bordered={false}
           style={{ maxWidth: 600 }}
           className={`drop-shadow-md ${
-            subscription_valid && "pointer-events-none"
+            !userData.subscription_valid && "pointer-events-none"
           }`}
         >
           <div className="font-semibold mb-4">Copy referral</div>
           <Paragraph
-            copyable={subscription_valid}
+            copyable={!userData.subscription_valid}
             className={`text-blue-500 ${
-              subscription_valid && "pointer-events-none !text-slate-400"
+              !userData.subscription_valid && "pointer-events-none !text-slate-400"
             }`}
           >
             {modifiedReferralLink}
@@ -106,7 +129,9 @@ const Dashboard = () => {
             <div className="font-semibold">Plan</div>
             <div>{subscription.plan_name}</div>
           </div>
-          <div className="text-sm mt-1 text-slate-700">{subscription.plan_discription}</div>
+          <div className="text-sm mt-1 text-slate-700">
+            {subscription.plan_discription}
+          </div>
         </Card>
       </div>
     </PageWrapper>

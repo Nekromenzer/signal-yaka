@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar } from "antd";
 import { AntDesignOutlined } from "@ant-design/icons";
 
-const PageWrapper = ({ children }) => {
+const PageWrapper = ({ children, childClass }) => {
   const path = window.location.pathname;
   return (
     <>
@@ -19,7 +19,9 @@ const PageWrapper = ({ children }) => {
           src={localStorage.getItem("profilePic")}
         />
       </div>
-      <div className="h-[calc(100vh-50px)] lg:h-[calc(100vh-70px)] 2xl:h-[calc(100vh-74px)] p-4 lg:p-5 ">
+      <div
+        className={`h-[calc(100vh-50px)] lg:h-[calc(100vh-70px)] 2xl:h-[calc(100vh-50px)] p-4 lg:p-5 ${childClass}`}
+      >
         {children}
       </div>
     </>

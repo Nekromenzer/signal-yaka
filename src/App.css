@@ -15,3 +15,11 @@ body {
 .ant-menu .ant-menu-item:nth-child(3) {
     margin-top: 70vh;
 }
+
+.dashboard-bg {
+    background: url(../public/wall.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: opacity(0.5);
+}
