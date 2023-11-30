@@ -22,7 +22,7 @@ const Home = () => {
   }, []);
   return (
     <div className="h-screen overflow-hidden">
-      <img src="/public/logo.png" width={300} className="absolute top-5 left-24"/>
+      <img src="/public/logo.png" width={300} className="absolute top-5 left-28"/>
       <div className="bg-gradient-to-r from-emerald-100 from-10% via-sky-500 via-30% to-emerald-500 to-90% absolute w-fit md:w-full opacity-40 rounded-bl-[6rem] h-[80vh] md:h-[26rem] lg:rounded-bl-[18.75rem] lg:h-[37.5rem] xl:h-[49.5rem] 2xl:h-screen" />
       <div className="md:w-full relative z-[11] w-fit">
         <div className="flex justify-normal md:justify-between items-start h-screen px-8 lg:px-[8rem] pt-[6rem] lg:pt-[10rem] xl:pt-[14rem] lg:flex-row flex-col">
