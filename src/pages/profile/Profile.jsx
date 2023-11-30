@@ -80,20 +80,6 @@ const Profile = () => {
         }
       },
     });
-
-    //   axios
-    //     .get("https://us-central1-infact-zerp.cloudfunctions.net/api/user/profiles")
-    //     .then(function (response) {
-    //       // handle success
-    //       console.log(response);
-    //     })
-    //     .catch(function (error) {
-    //       // handle error
-    //       console.log(error);
-    //     })
-    //     .finally(function () {
-    //       // always executed
-    //     });
   }, []);
 
   return (
