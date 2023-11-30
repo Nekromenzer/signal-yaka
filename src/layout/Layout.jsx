@@ -41,7 +41,7 @@ const Layout = () => {
       <Col span={3}>
         <div className="h-[100px] drop-shadow-md border-none flex items-center justify-center cursor-pointer bg-white">
           <img
-            src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+            src="src/assets/logo.png"
             alt="logo"
             className="h-[50px]"
           />

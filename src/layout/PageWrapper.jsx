@@ -6,8 +6,8 @@ const PageWrapper = ({ children }) => {
   const path = window.location.pathname;
   return (
     <>
-      <div className="h-[50px] w-full px-4 lg:px-5 flex items-center gap-4 justify-end bg-emerald-500">
-        <div className="mr-auto text-[0.8rem] capitalize font-mono">
+      <div className="h-[50px] w-full px-4 lg:px-5 flex items-center gap-4 justify-end bg-blue-950">
+        <div className="mr-auto text-[0.8rem] capitalize font-mono text-white/70">
           {path.replace("/", "")}
         </div>
         <span className="font-semibold tracking-wide text-base text-white">
