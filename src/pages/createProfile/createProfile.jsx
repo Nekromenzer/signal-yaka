@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Card } from "antd";
 import { useNavigate } from "react-router-dom";
 import handleApiCall from "../../api/handleApiCall";
 
@@ -52,7 +52,11 @@ const CreateProfile = () => {
   return (
     <div className="h-screen flex flex-col items-center justify-center">
       {showForm && (
-        <>
+        <Card
+          bordered={false}
+          style={{ maxWidth: 600, width: "100%" }}
+          className="drop-shadow-md shadow-emerald-500"
+        >
           <div className="mb-5 text-center text-[2rem]">Create Profile</div>
           <Form
             name="create"
@@ -160,14 +164,6 @@ const CreateProfile = () => {
               <Input />
             </Form.Item>
 
-            {/* <Form.Item
-          label=""
-          name="address"
-          rules={[{ required: true, message: "Please enter your Address" }]}
-        >
-          <Input />
-        </Form.Item> */}
-
             <Form.Item
               label="Telegram ID"
               name="telegram_id"
@@ -202,7 +198,7 @@ const CreateProfile = () => {
               </Button>
             </Form.Item>
           </Form>
-        </>
+        </Card>
       )}
     </div>
   );

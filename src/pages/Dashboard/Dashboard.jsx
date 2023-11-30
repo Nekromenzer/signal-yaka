@@ -1,13 +1,19 @@
 import React from "react";
 import PageWrapper from "../../layout/PageWrapper";
-import Marquee from "react-fast-marquee";
-import { Alert } from "antd";
+// import Marquee from "react-fast-marquee";
+import { Alert, Card, Typography } from "antd";
 
 const Dashboard = () => {
+  const { Paragraph } = Typography;
+  const referralLink = import.meta.env.VITE_REFERRAL_URL;
+  const modifiedReferralLink = `${referralLink}/ref/${localStorage.getItem(
+    "uid"
+  )}`;
+
   return (
     <PageWrapper>
       <div className="2xl:mx-24">
-        <Alert
+        {/* <Alert
           banner
           message={
             <Marquee
@@ -32,7 +38,19 @@ const Dashboard = () => {
               the account activation
             </Marquee>
           }
-        />
+        /> */}
+      </div>
+      <div className="mt-12">
+        <Card
+          bordered={false}
+          style={{ maxWidth: 600 }}
+          className="drop-shadow-md"
+        >
+          <div className="font-semibold mb-4">Copy referral</div>
+          <Paragraph copyable className="text-blue-500">
+            {modifiedReferralLink}
+          </Paragraph>
+        </Card>
       </div>
     </PageWrapper>
   );
