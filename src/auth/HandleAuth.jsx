@@ -4,7 +4,7 @@ import { Outlet, Navigate } from 'react-router'
 const HandleAuth = () => {
   const auth = localStorage.getItem('token')
   if (!auth) {
-    return <Navigate to='/login' replace={true} />
+    return <Navigate to='/home' replace={true} />
   }
   return <Outlet />
 }

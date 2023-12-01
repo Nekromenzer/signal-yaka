@@ -8,7 +8,7 @@ const Ref = () => {
     localStorage.setItem("referralId", getIdByFilteringUrl);
     if (localStorage.getItem("referralId")) {
       setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = "/login";
       }, 2000);
     }
   }, []);
