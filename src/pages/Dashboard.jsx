@@ -172,9 +172,11 @@ const Dashboard = () => {
                   ) || 0
                 }
                 format={() => (
-                  <div className="text-[1rem]">{`${Math.abs(
-                    getRemainingDays
-                  )} Days`}</div>
+                  <div className="text-[1rem]">{`${
+                    userData.subscribed_at?._seconds
+                      ? Math.abs(getRemainingDays)
+                      : "0"
+                  } Days`}</div>
                 )}
               />
             </div>
