@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
-import heroImage from "/public/hero-1.png";
+import heroImage from "/src/img/hero-1.png";
 import { loadSlim } from "tsparticles-slim";
 import AOS from "aos";
 import Particles from "react-particles";
@@ -22,10 +22,10 @@ const Home = () => {
   }, []);
   return (
     <div className="h-screen overflow-hidden">
-      <img src="/public/logo.png" width={300} className="absolute top-5 left-28"/>
+      <img src="/src/img/logo.png" width={300} className="absolute top-5 left-28"/>
       <div className="bg-gradient-to-r from-emerald-100 from-10% via-sky-500 via-30% to-emerald-500 to-90% absolute w-fit md:w-full opacity-40 rounded-bl-[6rem] h-[80vh] md:h-[26rem] lg:rounded-bl-[18.75rem] lg:h-[37.5rem] xl:h-[49.5rem] 2xl:h-screen" />
       <div className="md:w-full relative z-[11] w-fit">
-        <div className="flex justify-normal md:justify-between items-start h-screen px-8 lg:px-[8rem] pt-[6rem] lg:pt-[10rem] xl:pt-[14rem] lg:flex-row flex-col">
+        <div className="flex justify-normal md:justify-between items-start h-screen px-8 lg:px-[8rem] pt-[5rem] lg:pt-[10rem] xl:pt-[12rem] lg:flex-row flex-col">
           <div className="w-full lg:w-[50%] lg:absolute">
             <h1 className="text-[#1D3557] text-[3rem] md:text-[3rem] lg:text[3.5rem] xl:text-[5rem] font-normal lg:leading-[4rem] xl:leading-[6rem] leading-[4rem] mb-8 text-center lg:text-left">
               Unlock Earnings
