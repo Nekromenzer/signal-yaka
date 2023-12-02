@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { Menu, Row, Col, Grid } from "antd";
-import { FaLink, FaRankingStar, FaRegUser } from "react-icons/fa6";
+import { Menu, Row, Col, Grid, FloatButton, Modal } from "antd";
+import { FaRankingStar, FaRegUser } from "react-icons/fa6";
 import { FaSignOutAlt } from "react-icons/fa";
+import { MdOutlineMenu } from "react-icons/md";
 
 const Layout = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const { useBreakpoint } = Grid;
   const screens = useBreakpoint();
-  console.log(screens);
+
   function getItem(label, key, icon, children) {
+    if (screens.xl) {
+      return {
+        key,
+        icon,
+        children,
+        label,
+      };
+    }
     return {
       key,
       icon,
       children,
-      label,
     };
   }
 
@@ -40,9 +49,15 @@ const Layout = () => {
       return navigate("/profile", { replace: true });
     }
     if (key === "logout") {
-      localStorage.clear();
-      return navigate("/login", { replace: true });
+      return showModal();
     }
+  };
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -64,6 +79,44 @@ const Layout = () => {
       </Col>
       <Col span={screens.xs ? 24 : 21}>
         <Outlet />
+        <FloatButton.Group
+          trigger="click"
+          type="primary"
+          shape="square"
+          style={{ right: 24 }}
+          icon={<MdOutlineMenu />}
+        >
+          <FloatButton
+            icon={<FaRankingStar />}
+            onClick={() => {
+              navigate("/dashboard", { replace: true });
+            }}
+          />
+          <FloatButton
+            icon={<FaRegUser />}
+            onClick={() => {
+              navigate("/profile", { replace: true });
+            }}
+          />
+          <FloatButton
+            icon={<FaSignOutAlt />}
+            onClick={() => {
+              showModal();
+            }}
+          />
+        </FloatButton.Group>
+
+        <Modal
+          title="Logout"
+          open={isModalOpen}
+          onOk={() => {
+            localStorage.clear();
+            navigate("/login", { replace: true });
+          }}
+          onCancel={handleCancel}
+        >
+          <p>Are you sure to logout?</p>
+        </Modal>
       </Col>
     </Row>
   );
