@@ -18,7 +18,8 @@ function App() {
       <Route path="ref/:id" element={<Ref />} />
       <Route path="login" element={<SignIn />} />
       <Route element={<HandleAuth />}>
-        <Route index path="/" element={<CreateProfile />} />
+        <Route index path="/" element={<Navigate to="/create" replace />} />
+        <Route index path="/create" element={<CreateProfile />} />
         <Route element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="referral" element={<Referral />} />

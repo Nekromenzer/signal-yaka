@@ -10,18 +10,18 @@ function validateNIC(nicNumber) {
 
 const CreateProfile = () => {
   const [loading, setLoading] = useState(false);
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const navigate = useNavigate();
   // console.log(localStorage.getItem("email"));
 
   const initialValues = {
     name: localStorage.getItem("name"),
     email: localStorage.getItem("email"),
-    nic: "991221891V",
-    mobile: "0766856678",
-    address: "bandarwela",
-    telegram_id: "23123",
-    binance_pay_id: "213123123",
+    nic: "",
+    mobile: "",
+    address: "",
+    telegram_id: "",
+    binance_pay_id: "",
   };
 
   useEffect(() => {
@@ -35,16 +35,21 @@ const CreateProfile = () => {
           const { subscription_valid, kyc_verified } = res?.data;
           localStorage.setItem("subscription_valid", subscription_valid);
           localStorage.setItem("kyc_verified", kyc_verified);
-          if (!subscription_valid || !kyc_verified) {
-            navigate("/dashboard", { replace: true });
-          } else {
-            navigate("/profile", { replace: true });
+
+          console.log(res.data);
+          if (res.data !== "") {
+            if (!subscription_valid || !kyc_verified) {
+              navigate("/dashboard", { replace: true });
+            } else {
+              navigate("/profile", { replace: true });
+            }
           }
-        } else if (res.response.data.statusCode === 404) {
+        } else if (res.response.data.statusCode === 404 || res.data === "") {
           setShowForm(true);
-        } else {
-          navigate("/dashboard", { replace: true });
         }
+        // else {
+        //   navigate("/dashboard", { replace: true });
+        // }
       },
     });
   }, []);
