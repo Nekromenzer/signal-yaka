@@ -1,33 +1,33 @@
 const urlDoc = {
   user: {
     profiles: {
-      url: "user/profiles",
+      url: "user/secure/profiles",
       type: "get",
     },
     createProfile: {
-      url: "user/profile",
+      url: "user/secure/profile",
       type: "post",
     },
     getProfileById: {
-      url: "user/profile",
+      url: "user/secure/profile",
       type: "get",
     },
     editProfile: {
-      url: "user/profile",
+      url: "user/secure/profile",
       type: "put",
     },
   },
   variant: {
     create: {
-      url: "core/subscription",
+      url: "core/secure/subscription",
       type: "post",
     },
     getSubById: {
-      url: "core/subscription",
+      url: "core/secure/subscription",
       type: "get",
     },
     getAllSubs: {
-      url: "core/subscriptions",
+      url: "core/secure/subscriptions",
       type: "get",
     },
   },
