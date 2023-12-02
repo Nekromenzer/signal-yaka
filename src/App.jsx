@@ -8,7 +8,8 @@ import Profile from "./pages/profile/Profile";
 import Ref from "./pages/refCheck/ref";
 import CreateProfile from "./pages/createProfile/createProfile";
 import Home from "./pages/home/Home";
-import Dashboard from "./pages/dashboard/Dashboard";
+// temp fix - path need to fix later
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import PageWrapper from "../../layout/PageWrapper";
+import PageWrapper from "../layout/PageWrapper";
 import Marquee from "react-fast-marquee";
 import { Alert, Card, Typography, Statistic, Row, Col, Progress } from "antd";
-import handleApiCall from "../../api/handleApiCall";
+import handleApiCall from "../api/handleApiCall";
 import { RiMedalFill } from "react-icons/ri";
 import { FaCheckCircle } from "react-icons/fa";
 import { IoMdCloseCircle } from "react-icons/io";
