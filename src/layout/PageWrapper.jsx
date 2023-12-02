@@ -5,12 +5,12 @@ import { AntDesignOutlined } from "@ant-design/icons";
 const PageWrapper = ({ children, childClass }) => {
   const path = window.location.pathname;
   return (
-    <>
-      <div className="h-[50px] w-full px-4 lg:px-5 flex items-center gap-4 justify-end bg-blue-950">
-        <div className="mr-auto text-[0.8rem] capitalize font-mono text-white/70">
+    <div className="dashboard-bg">
+      <div className="h-[50px] w-full px-4 lg:px-5 flex items-center gap-4 justify-end bg-transparent">
+        <div className="mr-auto text-[0.8rem] capitalize font-mono text-slate-900/70">
           {path.replace("/", "")}
         </div>
-        <span className="font-semibold tracking-wide text-base text-white">
+        <span className="font-semibold tracking-wide text-base text-slate-950">
           {localStorage.getItem("name")}
         </span>
         <Avatar
@@ -24,7 +24,7 @@ const PageWrapper = ({ children, childClass }) => {
       >
         {children}
       </div>
-    </>
+    </div>
   );
 };
 
