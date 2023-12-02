@@ -1,12 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { Menu, Row, Col } from "antd";
+import { Menu, Row, Col, Grid } from "antd";
 import { FaLink, FaRankingStar, FaRegUser } from "react-icons/fa6";
 import { FaSignOutAlt } from "react-icons/fa";
 
 const Layout = () => {
   const navigate = useNavigate();
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  console.log(screens);
   function getItem(label, key, icon, children) {
     return {
       key,
@@ -44,8 +47,8 @@ const Layout = () => {
 
   return (
     <Row>
-      <Col span={3}>
-        <div className="h-[100px] drop-shadow-md border-none flex items-center justify-center cursor-pointer bg-white">
+      <Col span={screens.xs ? 0 : 3}>
+        <div className="h-[100px] drop-shadow-md flex items-center justify-center cursor-pointer bg-white  border-r-[1px]">
           <img src="/logo.png" alt="logo" className="h-[50px]" />
         </div>
         <Menu
@@ -53,13 +56,13 @@ const Layout = () => {
           mode="inline"
           theme="light"
           items={items}
-          className="h-[calc(100vh-100px)] drop-shadow-md !border-none"
+          className="h-[calc(100vh-100px)] drop-shadow-md "
           onClick={(menuData) => {
             handleNavigation(menuData);
           }}
         />
       </Col>
-      <Col span={21}>
+      <Col span={screens.xs ? 24 : 21}>
         <Outlet />
       </Col>
     </Row>
