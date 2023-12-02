@@ -103,7 +103,7 @@ const Dashboard = () => {
   return (
     <PageWrapper>
       <Row>
-        <Col xs={24} md={18}>
+        <Col xs={24} lg={18}>
           <div className="2xl:mx-24">
             {!userData.kyc_verified && (
               <Alert
@@ -158,7 +158,7 @@ const Dashboard = () => {
             </Card>
           </div>
         </Col>
-        <Col xs={24} md={6} className="flex flex-col gap-6">
+        <Col xs={24} lg={6} className="flex flex-col gap-6">
           <div className="my-8 2xl:my-10 text-center">
             <div className="flex flex-col gap-1 items-center justify-center">
               <div className="text-base font-semibold mb-3">
