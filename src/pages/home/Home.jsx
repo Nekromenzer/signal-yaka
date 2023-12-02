@@ -21,12 +21,12 @@ const Home = () => {
     AOS.init();
   }, []);
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="h-screen">
       <img src="/src/img/logo.png" width={300} className="absolute top-5 left-28"/>
-      <div className="bg-gradient-to-r from-emerald-100 from-10% via-sky-500 via-30% to-emerald-500 to-90% absolute w-fit md:w-full opacity-40 rounded-bl-[6rem] h-[80vh] md:h-[26rem] lg:rounded-bl-[18.75rem] lg:h-[37.5rem] xl:h-[49.5rem] 2xl:h-screen" />
+      <div className="bg-gradient-to-r from-emerald-100 from-10% via-sky-500 via-30% to-emerald-500 to-90% absolute w-fit md:w-full opacity-40 rounded-bl-[6rem] h-[80vh] lg:rounded-bl-[18.75rem] md:h-screen  2xl:h-screen" />
       <div className="md:w-full relative z-[11] w-fit">
         <div className="flex justify-normal md:justify-between items-start h-screen px-8 lg:px-[8rem] pt-[5rem] lg:pt-[10rem] xl:pt-[12rem] lg:flex-row flex-col">
-          <div className="w-full lg:w-[50%] lg:absolute">
+          <div className="w-full lg:w-[50%] lg:absolute pt-[6rem] md:pt-0">
             <h1 className="text-[#1D3557] text-[3rem] md:text-[3rem] lg:text[3.5rem] xl:text-[5rem] font-normal lg:leading-[4rem] xl:leading-[6rem] leading-[4rem] mb-8 text-center lg:text-left">
               Unlock Earnings
               <br className="md:hidden lg:block" />
@@ -56,11 +56,11 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="self-end w-full lg:w-[50%] lg:absolute right-0  lg:top-[13.6rem] xl:pl-[11rem] hidden lg:block">
+          <div className="self-end w-full lg:w-[50%] lg:absolute right-0  lg:bottom-0 xl:pl-[11rem] hidden lg:block">
             <img
               width="auto"
               src={heroImage}
-              className="max-w-[30rem]"
+              className="max-w-[30rem] relative"
               alt="office"
             />
           </div>
