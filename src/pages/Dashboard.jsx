@@ -14,6 +14,10 @@ const Dashboard = () => {
     kyc_verified: false,
   });
   const [userData, setUserData] = useState({});
+  const [earnings, setEarnings] = useState({
+    direct: 0,
+    indirect: 0,
+  });
   const [loading, setLoading] = useState(false);
 
   const { Paragraph } = Typography;
@@ -41,16 +45,54 @@ const Dashboard = () => {
     },
   ];
 
+  const warningMsgs = [
+    "Please enter your Required data in profile!",
+    "Please make payment using link or qr code then contact Admin for the account activation",
+  ];
+
+  function toDateTime(secs) {
+    var t = new Date(1970, 0, 1); // Epoch
+    t.setSeconds(secs);
+    return t;
+  }
+
+  function percentage(partialValue, totalValue) {
+    return (100 * partialValue) / totalValue;
+  }
+
+  const subsValid = 180;
+  const subscribedDay = toDateTime(userData.subscribed_at?._seconds);
+  const subscriptionEndDate = dayjs(subscribedDay)
+    .add(subsValid, "day")
+    .format("YYYY-MM-DD");
+  const getRemainingDays = dayjs().diff(subscriptionEndDate, "day");
+
   useEffect(() => {
     handleApiCall({
       variant: "variant",
       urlType: "getSubById",
-      // urlParams: `/${localStorage.getItem("uid")}`,
-      urlParams: "/5p8crgmWHaxSBV78yECK",
+      urlParams: `/${localStorage.getItem("uid")}`,
       setLoading,
       cb: (res) => {
         if (res.status === 200) {
           setSubscription(res?.data);
+        }
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    handleApiCall({
+      urlType: "getWalletById",
+      urlParams: `/${localStorage.getItem("uid")}`,
+      setLoading,
+      cb: (res) => {
+        if (res.status === 200) {
+          const { direct_earnings, indirect_earnings } = res?.data;
+          setEarnings({
+            direct: direct_earnings,
+            indirect: indirect_earnings,
+          });
         }
       },
     });
@@ -76,30 +118,24 @@ const Dashboard = () => {
     });
   }, []);
 
-  function toDateTime(secs) {
-    var t = new Date(1970, 0, 1); // Epoch
-    t.setSeconds(secs);
-    return t;
-  }
-
-  function percentage(partialValue, totalValue) {
-    return (100 * partialValue) / totalValue;
-  }
-
-  const subsValid = 180;
-  const subscribedDay = toDateTime(userData.subscribed_at?._seconds);
-  const subscriptionEndDate = dayjs(subscribedDay)
-    .add(subsValid, "day")
-    .format("YYYY-MM-DD");
-  const getRemainingDays = dayjs().diff(subscriptionEndDate, "day");
-
   return (
     <PageWrapper>
       <Spin tip="Updating... Please wait" spinning={loading}>
         <Row>
           <Col xs={24} lg={18}>
-            <div className="2xl:mx-24">
+            <div className="2xl:mx-24 flex flex-col md:flex-row gap-6 justify-between">
               {!userData.kyc_verified && (
+                <div className="w-full flex-1 min-h-[8rem] bg-yellow-50 rounded-2xl shadow-sm border-2 text-center px-4 border-yellow-200 flex items-center justify-center text-slate-900 font-semibold tracking-wider">
+                  Please enter your Required data in profile!
+                </div>
+              )}
+              {!userData.subscription_valid && (
+                <div className="w-full flex-1 min-h-[8rem] bg-yellow-50 rounded-2xl shadow-sm border-2 text-center px-4 border-yellow-200 flex items-center justify-center text-slate-900 font-semibold tracking-wider">
+                  Please make payment using link or qr code then contact Admin
+                  for the account activation!
+                </div>
+              )}
+              {/* {!userData.kyc_verified && (
                 <Alert
                   banner
                   message={
@@ -129,25 +165,33 @@ const Dashboard = () => {
                     </Marquee>
                   }
                 />
-              )}
+              )} */}
             </div>
             <div className="mt-12">
               <Card
                 bordered={false}
                 style={{ maxWidth: 600 }}
-                className={`drop-shadow-md ${
-                  !userData.subscription_valid && "pointer-events-none"
-                }`}
+                className={`drop-shadow-md`}
               >
-                <div className="font-semibold mb-4">Copy referral</div>
+                <div className="w-auto h-[6rem] mb-8 p-3 rounded-lg cursor-pointer flex items-center justify-center px-8 gap-[2rem] hover:border-2 hover:border-blue-900 duration-700 transition-all delay-75 hover:bg-blue-50">
+                  <div className="text-[1.2rem] font-semibold">Earnings</div>
+                  <div>-</div>
+                  <div className="text-[1.5rem] font-normal">
+                    $ {earnings.direct + earnings.indirect}
+                  </div>
+                </div>
+                <div className="font-semibold mb-2">Copy referral</div>
                 <Paragraph
-                  copyable={!userData.subscription_valid}
-                  className={`text-blue-500 ${
-                    !userData.subscription_valid &&
-                    "pointer-events-none !text-slate-400"
-                  }`}
+                  copyable={userData.subscription_valid}
+                  className={` ${
+                    userData.subscription_valid
+                      ? "text-blue-500"
+                      : "text-slate-500"
+                  } cursor-pointer select-none`}
                 >
-                  {modifiedReferralLink}
+                  {userData.subscription_valid
+                    ? modifiedReferralLink
+                    : "please subscribe to activate referral link"}
                 </Paragraph>
               </Card>
             </div>
