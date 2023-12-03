@@ -317,7 +317,7 @@ const Dashboard = () => {
           <div className="w-1/2 h-[8rem] rounded-2xl p-4 flex flex-col justify-center border-[1px] duration-500 transition-all delay-75 hover:bg-yellow-50">
             <div className="flex gap-2 items-center justify-between h-[3rem] mb-2">
               <SiBinance className="text-yellow-400 text-[3rem]" />
-              <div className="text-[0.8rem] text-start">Binance payid</div>
+              <div className="text-[0.8rem] text-start">Binance pay Id</div>
             </div>
             <Paragraph copyable className="mt-3">
               {import.meta.env.VITE_BINANCE_PAY_ID}
