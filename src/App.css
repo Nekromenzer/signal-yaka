@@ -23,3 +23,6 @@ body {
     background-size: cover;
     backdrop-filter: opacity(0.5);
 }
+.ant-modal-wrap{
+    @apply bg-slate-900/60
+}
