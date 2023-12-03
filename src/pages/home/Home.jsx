@@ -21,8 +21,8 @@ const Home = () => {
     AOS.init();
   }, []);
   return (
-    <div className="h-screen">
-      <img src="/src/img/logo.png" width={300} className="absolute top-5 left-28"/>
+    <div className="h-screen home-section">
+      <div className="absolute top-5 left-28 bg-logo bg-no-repeat bg-center bg-contain w-[300px] h-[90px]" />
       <div className="bg-gradient-to-r from-emerald-100 from-10% via-sky-500 via-30% to-emerald-500 to-90% absolute w-fit md:w-full opacity-40 rounded-bl-[6rem] h-[80vh] lg:rounded-bl-[18.75rem] md:h-screen  2xl:h-screen" />
       <div className="md:w-full relative z-[11] w-fit">
         <div className="flex justify-normal md:justify-between items-start h-screen px-8 lg:px-[8rem] pt-[5rem] lg:pt-[10rem] xl:pt-[12rem] lg:flex-row flex-col">

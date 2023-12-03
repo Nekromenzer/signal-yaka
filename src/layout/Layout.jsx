@@ -64,11 +64,7 @@ const Layout = () => {
     <Row>
       <Col span={screens.xs ? 0 : 3}>
         <div className="h-[100px] drop-shadow-md flex items-center justify-center cursor-pointer bg-white  border-r-[1px]">
-          <img
-            src="/src/img/logo.png"
-            alt="logo"
-            className="h-[50px] w-auto lg:px-8"
-          />
+          <div className="h-[50px] w-full lg:px-8 bg-logo bg-no-repeat bg-center bg-contain" />
         </div>
         <Menu
           defaultSelectedKeys={[path.replace("/", "")]}
@@ -122,7 +118,8 @@ const Layout = () => {
             className: "bg-white text-navy border-none px-4",
           }}
           okButtonProps={{
-            className: "bg-red-400 text-white border-none px-4 hover:!bg-red-600",
+            className:
+              "bg-red-400 text-white border-none px-4 hover:!bg-red-600",
           }}
         >
           <p>Are you sure to logout?</p>
