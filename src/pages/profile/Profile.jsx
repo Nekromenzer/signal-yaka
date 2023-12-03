@@ -50,6 +50,8 @@ const Profile = () => {
             telegram_id: telegram_id,
             binance_pay_id: binance_pay_id,
           });
+        } else {
+          messageApi.error("Something went wrong");
         }
       },
     });
@@ -71,6 +73,7 @@ const Profile = () => {
 
   return (
     <PageWrapper>
+      {contextHolder}
       <Spin tip="Updating... Please wait" spinning={loading}>
         <Card
           bordered={false}
