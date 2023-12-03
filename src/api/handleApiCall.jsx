@@ -28,7 +28,7 @@ const handleApiCall = ({
           Accept: "*/*",
           "Access-Control-Allow-Headers": "*",
           "Access-Control-Allow-Origin": "*",
-          Authorization: auth ? `Bearer ${localStorage.getItem("token")}` : "",
+          Authorization: auth ? `${localStorage.getItem("token")}` : "",
         },
       });
       setLoading(false);
