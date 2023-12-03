@@ -16,6 +16,10 @@ const urlDoc = {
       url: "user/secure/profile",
       type: "put",
     },
+    getWalletById:{
+      url: "user/secure/wallet",
+      type: "get",
+    }
   },
   variant: {
     create: {
