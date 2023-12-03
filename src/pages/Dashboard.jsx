@@ -45,11 +45,6 @@ const Dashboard = () => {
     },
   ];
 
-  const warningMsgs = [
-    "Please enter your Required data in profile!",
-    "Please make payment using link or qr code then contact Admin for the account activation",
-  ];
-
   function toDateTime(secs) {
     var t = new Date(1970, 0, 1); // Epoch
     t.setSeconds(secs);
