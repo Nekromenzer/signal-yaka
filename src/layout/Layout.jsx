@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { Menu, Row, Col, Grid, FloatButton, Modal } from "antd";
 import { FaRankingStar, FaRegUser } from "react-icons/fa6";
-import { FaSignOutAlt,FaWallet } from "react-icons/fa";
+import { FaSignOutAlt, FaWallet } from "react-icons/fa";
 import { MdOutlineMenu } from "react-icons/md";
 
 const Layout = () => {
@@ -32,7 +32,7 @@ const Layout = () => {
 
   const items = [
     getItem("Dashboard", "dashboard", <FaRankingStar />),
-    getItem("Wallet", "wallet", <FaWallet  />),
+    getItem("Wallet", "wallet", <FaWallet />),
     getItem("Profile", "profile", <FaRegUser />),
     getItem("Logout", "logout", <FaSignOutAlt />),
   ];
@@ -90,6 +90,12 @@ const Layout = () => {
             icon={<FaRankingStar />}
             onClick={() => {
               navigate("/dashboard", { replace: true });
+            }}
+          />
+          <FloatButton
+            icon={<FaWallet />}
+            onClick={() => {
+              navigate("/wallet", { replace: true });
             }}
           />
           <FloatButton
