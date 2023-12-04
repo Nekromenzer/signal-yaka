@@ -36,6 +36,10 @@ const handleApiCall = ({
     } catch (error) {
       setLoading(false);
       cb(error, error.response);
+      if (error.response?.status === 401 || error.response?.status === 403) {
+        localStorage.clear();
+        window.location.reload();
+      }
       throw error;
     }
   }
