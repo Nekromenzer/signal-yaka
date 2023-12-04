@@ -310,7 +310,7 @@ const Dashboard = () => {
         }}
       >
         <p className="text-base text-center italic tracking-wide mt-4">
-          Please pay $30 to admin and send a screen-shot to admin to activate
+          Please pay $30 to admin and send a <b>screen-shot and google account related to 10Doller</b> to admin to activate
           your account
         </p>
         <div className="flex flex-wrap md:flex-nowrap flex-row md:flex-row items-center justify-between mt-8 gap-4 mb-12">
